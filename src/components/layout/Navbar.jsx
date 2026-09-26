@@ -25,6 +25,7 @@ export default function Navbar() {
   return (
     <>
       <motion.nav
+        className="site-nav"
         initial={{ y: -20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: .6, delay: 1.6, ease: [.25,.1,.25,1] }}
@@ -40,8 +41,8 @@ export default function Navbar() {
         }}
       >
         {/* ── Logo ── */}
-        <Link to="/" onClick={close} style={{ display: 'flex', alignItems: 'center', lineHeight: 0 }}>
-          <NavLogo height={58} />
+        <Link to="/" onClick={close} style={{ display: 'flex', alignItems: 'center', lineHeight: 0, minWidth: 0 }}>
+          <NavLogo height={58} className="nav-logo" />
         </Link>
 
         {/* ── Desktop links ── */}
@@ -102,15 +103,20 @@ export default function Navbar() {
             transition={{ duration: .25 }}
             className="lg:hidden"
             style={{ position: 'fixed', inset: 0, zIndex: 40, background: 'rgba(0,0,0,0.97)',
-              display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: '2rem' }}>
+              display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: '2rem', overflowY: 'auto', padding: '5rem 1.5rem 2rem' }}>
 
-            <NavLogo height={68} />
+            <button type="button" onClick={close} aria-label="Close menu"
+              style={{ position: 'absolute', top: '1rem', right: '1.25rem', background: 'none', border: '1px solid #333', color: '#F7F5F0', padding: '.6rem', lineHeight: 0 }}>
+              <X size={24} />
+            </button>
+
+            <NavLogo height={56} className="mobile-menu-logo" />
 
             {SITE.nav.map(({ label, href }, i) => (
               <motion.div key={href}
                 initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: i * .06, duration: .35, ease: [.25,.1,.25,1] }}>
-                <NavLink to={href} onClick={close}>
+                <NavLink to={href} onClick={close} className="mobile-menu-link">
                   {({ isActive }) => (
                     <span style={{ fontFamily: 'Space Grotesk', fontSize: '1.875rem', fontWeight: 700,
                       color: isActive ? '#9EFF00' : '#F7F5F0', letterSpacing: '-0.01em' }}>
