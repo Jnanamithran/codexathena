@@ -46,7 +46,7 @@ export default function Navbar() {
         </Link>
 
         {/* ── Desktop links ── */}
-        <ul style={{ display: 'flex', alignItems: 'center', gap: '2.25rem', listStyle: 'none', margin: 0, padding: 0 }}
+        <ul style={{ alignItems: 'center', gap: '2.25rem', listStyle: 'none', margin: 0, padding: 0 }}
           className="hidden lg:flex">
           {SITE.nav.map(({ label, href }) => (
             <li key={href}>
@@ -83,7 +83,7 @@ export default function Navbar() {
         </motion.a>
 
         {/* ── Mobile toggle ── */}
-        <button onClick={() => setOpen(v => !v)} className="lg:hidden"
+        <button onClick={() => setOpen(v => !v)} className="mobile-menu-toggle lg:hidden"
           aria-label={open ? 'Close menu' : 'Open menu'}
           style={{ background: 'none', border: 'none', color: '#F7F5F0', padding: 4, lineHeight: 0 }}>
           <AnimatePresence mode="wait">
@@ -101,11 +101,13 @@ export default function Navbar() {
           <motion.div
             initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
             transition={{ duration: .25 }}
-            className="lg:hidden"
-            style={{ position: 'fixed', inset: 0, zIndex: 40, background: 'rgba(0,0,0,0.97)',
-              display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: '2rem', overflowY: 'auto', padding: '5rem 1.5rem 2rem' }}>
+            className="mobile-menu-overlay lg:hidden"
+            style={{ position: 'fixed', inset: 0, zIndex: 60, background: 'rgba(0,0,0,0.97)',
+              flexDirection: 'column', alignItems: 'center', justifyContent: 'flex-start', gap: '1.5rem',
+              overflowY: 'auto', WebkitOverflowScrolling: 'touch',
+              padding: 'max(5.5rem, calc(env(safe-area-inset-top) + 4.5rem)) 1.5rem max(2rem, env(safe-area-inset-bottom))' }}>
 
-            <button type="button" onClick={close} aria-label="Close menu"
+            <button type="button" onClick={close} aria-label="Close menu" className="mobile-menu-close"
               style={{ position: 'absolute', top: '1rem', right: '1.25rem', background: 'none', border: '1px solid #333', color: '#F7F5F0', padding: '.6rem', lineHeight: 0 }}>
               <X size={24} />
             </button>
@@ -118,7 +120,7 @@ export default function Navbar() {
                 transition={{ delay: i * .06, duration: .35, ease: [.25,.1,.25,1] }}>
                 <NavLink to={href} onClick={close} className="mobile-menu-link">
                   {({ isActive }) => (
-                    <span style={{ fontFamily: 'Space Grotesk', fontSize: '1.875rem', fontWeight: 700,
+                    <span className="mobile-menu-link-text" style={{ fontFamily: 'Space Grotesk', fontWeight: 700,
                       color: isActive ? '#9EFF00' : '#F7F5F0', letterSpacing: '-0.01em' }}>
                       {label}
                     </span>

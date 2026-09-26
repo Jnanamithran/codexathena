@@ -12,8 +12,8 @@ function ProjectCard({ project }) {
   const label     = categoryLabels[project.category] ?? '···'
 
   return (
-    <Reveal>
-      <article className="group bg-surface2 border border-border hover:border-dim transition-colors duration-200 overflow-hidden cursor-pointer">
+    <Reveal className="h-full">
+      <article className="group flex h-full flex-col bg-surface2 border border-border hover:border-dim transition-colors duration-200 overflow-hidden cursor-pointer">
         <div className={`relative aspect-[16/10] bg-gradient-to-br ${gradClass} flex items-center justify-center overflow-hidden`}>
           {project.thumb
             ? <img src={project.thumb} alt={project.title} className="w-full h-full object-cover" loading="lazy" />
@@ -26,7 +26,7 @@ function ProjectCard({ project }) {
             <ArrowUpRight size={26} className="text-accent" />
           </div>
         </div>
-        <div className="p-5">
+        <div className="flex flex-1 flex-col p-5">
           <div className="flex items-start justify-between gap-4">
             <div>
               <p className="font-head font-semibold text-[0.9375rem] mb-1">{project.title}</p>
@@ -34,7 +34,7 @@ function ProjectCard({ project }) {
               <p className="text-[0.8375rem] text-dim leading-relaxed">{project.description}</p>
             </div>
           </div>
-          <div className="flex flex-wrap gap-1.5 mt-4">
+          <div className="flex flex-wrap gap-1.5 mt-auto pt-4">
             {project.tags.map(t => (
               <span key={t} className="text-[0.65rem] font-medium tracking-[0.05em] uppercase px-2 py-0.5 border border-border text-dim">{t}</span>
             ))}

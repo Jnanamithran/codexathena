@@ -32,7 +32,7 @@ function ProjectCard({ project }) {
   return (
     <motion.article
       ref={ref}
-      style={{ rotateX, rotateY, transformStyle: 'preserve-3d', perspective: 1000, background: '#0D0D0D', cursor: 'pointer' }}
+      style={{ rotateX, rotateY, transformStyle: 'preserve-3d', perspective: 1000, background: '#0D0D0D', cursor: 'pointer', height: '100%', display: 'flex', flexDirection: 'column' }}
       onMouseMove={onMove}
       onMouseLeave={onLeave}
       whileHover={{ scale: 1.015, zIndex: 10 }}
@@ -47,7 +47,7 @@ function ProjectCard({ project }) {
       }} />
 
       {/* Thumb */}
-      <div className={`relative aspect-video bg-gradient-to-br ${grad} flex items-center justify-center overflow-hidden`} style={{ minHeight: 'clamp(10rem, 22vw, 20rem)', aspectRatio: '16 / 9' }}>
+      <div className={`relative aspect-video bg-gradient-to-br ${grad} flex flex-1 items-center justify-center overflow-hidden`} style={{ minHeight: 'clamp(10rem, 22vw, 20rem)', aspectRatio: '16 / 9' }}>
         {project.thumb
           ? <img src={project.thumb} alt={project.title} className="w-full h-full object-cover" loading="lazy" />
           : (
@@ -121,16 +121,16 @@ export default function SelectedWork() {
 
           {/* Row 1 */}
           <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0, 7fr) minmax(0, 5fr)', gap: '1px' }} className="responsive-work-row">
-            {shown[0] && <Reveal><div style={{ minWidth: 0 }}><ProjectCard project={shown[0]} /></div></Reveal>}
-            {shown[1] && <Reveal delay={100}><div style={{ minWidth: 0 }}><ProjectCard project={shown[1]} /></div></Reveal>}
+            {shown[0] && <Reveal className="h-full min-w-0"><ProjectCard project={shown[0]} /></Reveal>}
+            {shown[1] && <Reveal delay={100} className="h-full min-w-0"><ProjectCard project={shown[1]} /></Reveal>}
           </div>
 
           {/* Row 2 — always 3 equal cols using exactly projects 2,3,4 */}
           {shown.length > 2 && (
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, minmax(0, 1fr))', gap: '1px' }} className="responsive-work-row responsive-work-grid">
-              {shown[2] && <Reveal delay={50}><div style={{ minWidth: 0 }}><ProjectCard project={shown[2]} /></div></Reveal>}
-              {shown[3] && <Reveal delay={120}><div style={{ minWidth: 0 }}><ProjectCard project={shown[3]} /></div></Reveal>}
-              {shown[4] && <Reveal delay={190}><div style={{ minWidth: 0 }}><ProjectCard project={shown[4]} /></div></Reveal>}
+              {shown[2] && <Reveal delay={50} className="h-full min-w-0"><ProjectCard project={shown[2]} /></Reveal>}
+              {shown[3] && <Reveal delay={120} className="h-full min-w-0"><ProjectCard project={shown[3]} /></Reveal>}
+              {shown[4] && <Reveal delay={190} className="h-full min-w-0"><ProjectCard project={shown[4]} /></Reveal>}
             </div>
           )}
         </div>
