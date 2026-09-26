@@ -36,7 +36,7 @@ export const services = [
     id:          '3d',
     icon:        '◈',
     title:       '3D & Blender',
-    short:       '3D modeling, rendering, and visualization for products, spaces and creative work.',
+    short:       'Coming soon: 3D modeling, rendering, and visualization for products, spaces and creative work.',
     description: 'From product visualization to architectural walkthroughs and creative 3D content — we handle modeling, lighting, materials, and rendering in Blender.',
     deliverables: [
       'Product visualization & renders',
@@ -45,13 +45,13 @@ export const services = [
       'Motion graphics & animation',
     ],
     tech: ['Blender', 'Cycles', 'EEVEE', 'Substance Painter'],
-    status: 'active',
+    status: 'coming-soon',
   },
   {
     id:          'video',
     icon:        '▶',
     title:       'Video Editing',
-    short:       'Professional video editing for social content, YouTube, and promotional campaigns.',
+    short:       'Coming soon: professional video editing for social content, YouTube, and promotional campaigns.',
     description: 'We edit and produce videos for social media, brand campaigns, YouTube channels, and digital content. From raw footage to polished final cut.',
     deliverables: [
       'Social media content (Reels, Shorts)',
@@ -60,7 +60,7 @@ export const services = [
       'Color grading & sound design',
     ],
     tech: ['Premiere Pro', 'After Effects', 'DaVinci Resolve', 'Audition'],
-    status: 'active',
+    status: 'coming-soon',
   },
   {
     id:          'games',

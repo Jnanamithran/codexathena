@@ -32,7 +32,7 @@ function ProjectCard({ project }) {
   return (
     <motion.article
       ref={ref}
-      style={{ rotateX, rotateY, transformStyle: 'preserve-3d', perspective: 1000, background: '#0D0D0D', cursor: 'pointer' }}
+      style={{ rotateX, rotateY, transformStyle: 'preserve-3d', perspective: 1000, background: '#0D0D0D', cursor: 'pointer', display: 'flex', flexDirection: 'column', height: '100%' }}
       onMouseMove={onMove}
       onMouseLeave={onLeave}
       whileHover={{ scale: 1.015, zIndex: 10 }}
@@ -47,7 +47,7 @@ function ProjectCard({ project }) {
       }} />
 
       {/* Thumb */}
-      <div className={`relative aspect-video bg-gradient-to-br ${grad} flex items-center justify-center overflow-hidden`}>
+      <div className={`relative aspect-video bg-gradient-to-br ${grad} flex flex-1 items-center justify-center overflow-hidden`} style={{ minHeight: 0, aspectRatio: 'auto' }}>
         {project.thumb
           ? <img src={project.thumb} alt={project.title} className="w-full h-full object-cover" loading="lazy" />
           : (
@@ -75,7 +75,7 @@ function ProjectCard({ project }) {
       </div>
 
       {/* Label */}
-      <div style={{ padding: '1rem 1.25rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center', position: 'relative', zIndex: 2 }}>
+      <div style={{ padding: '1rem 1.25rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center', position: 'relative', zIndex: 2, flexShrink: 0 }}>
         <div>
           <p style={{ fontFamily: 'Space Grotesk', fontWeight: 600, fontSize: '0.9375rem', marginBottom: '0.2rem' }}>{project.title}</p>
           <p style={{ fontSize: '0.75rem', color: '#777' }}>{project.category} · {project.year}</p>

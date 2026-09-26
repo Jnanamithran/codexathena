@@ -11,7 +11,7 @@ export const team = [
     skills:      ['React', 'Node.js', 'TypeScript', 'Next.js', 'PostgreSQL', 'Python'],
     github:      null,
     linkedin:    null,
-    portfolio:   'https://jnanamithran.vercel.app',
+    portfolio:   'https://jn4n1.vercel.app',
     photo:       null,
   },
   {

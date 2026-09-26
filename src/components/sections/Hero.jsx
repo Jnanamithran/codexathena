@@ -121,6 +121,14 @@ export default function Hero() {
   return (
     <section ref={sectionRef} style={{ position:'relative', minHeight:'100svh', display:'flex', flexDirection:'column', justifyContent:'center', overflow:'hidden', background:'radial-gradient(circle at 72% 22%, rgba(158,255,0,.07), transparent 30%), #000' }}>
 
+      {/* Slow ambient movement keeps the hero alive without interaction. */}
+      <motion.div
+        animate={{ x:['-4%','4%','-4%'], y:['-2%','3%','-2%'], scale:[1,1.08,1] }}
+        transition={{ duration:18, repeat:Infinity, ease:'easeInOut' }}
+        style={{ position:'absolute', inset:'-12%', pointerEvents:'none', zIndex:0,
+          background:'radial-gradient(ellipse at 25% 35%, rgba(158,255,0,.13), transparent 36%), radial-gradient(ellipse at 78% 64%, rgba(40,120,70,.11), transparent 40%), radial-gradient(ellipse at 55% 100%, rgba(20,70,45,.1), transparent 42%)', filter:'blur(18px)' }}
+      />
+
       <ParticleField />
 
       {/* Radial vignette */}
