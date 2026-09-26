@@ -20,7 +20,7 @@ function ParticleField() {
     const N = Math.min(90, Math.floor(W * H / 14000))
     const pts = Array.from({ length: N }, () => ({
       x: Math.random() * W, y: Math.random() * H,
-      vx: (Math.random() - .5) * .4, vy: (Math.random() - .5) * .4,
+      vx: (Math.random() - .5) * .12, vy: (Math.random() - .5) * .12,
       r: Math.random() * 1.8 + .4, a: Math.random() * .6 + .1,
     }))
 
@@ -33,9 +33,9 @@ function ParticleField() {
       ctx.clearRect(0, 0, W, H)
       for (const p of pts) {
         const dx = p.x - mx, dy = p.y - my, d = Math.sqrt(dx*dx+dy*dy)
-        if (d < 130) { p.vx += dx/d*.04; p.vy += dy/d*.04 }
+        if (d < 130) { p.vx += dx/d*.012; p.vy += dy/d*.012 }
         p.x += p.vx; p.y += p.vy
-        p.vx *= .985; p.vy *= .985
+        p.vx *= .997; p.vy *= .997
         if (p.x < 0) p.x = W; if (p.x > W) p.x = 0
         if (p.y < 0) p.y = H; if (p.y > H) p.y = 0
         ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, Math.PI*2)
@@ -124,7 +124,7 @@ export default function Hero() {
       {/* Slow ambient movement keeps the hero alive without interaction. */}
       <motion.div
         animate={{ x:['-4%','4%','-4%'], y:['-2%','3%','-2%'], scale:[1,1.08,1] }}
-        transition={{ duration:18, repeat:Infinity, ease:'easeInOut' }}
+        transition={{ duration:36, repeat:Infinity, ease:'easeInOut' }}
         style={{ position:'absolute', inset:'-12%', pointerEvents:'none', zIndex:0,
           background:'radial-gradient(ellipse at 25% 35%, rgba(158,255,0,.13), transparent 36%), radial-gradient(ellipse at 78% 64%, rgba(40,120,70,.11), transparent 40%), radial-gradient(ellipse at 55% 100%, rgba(20,70,45,.1), transparent 42%)', filter:'blur(18px)' }}
       />
@@ -140,10 +140,10 @@ export default function Hero() {
         backgroundSize:'128px' }}/>
 
       {/* Glowing orbs */}
-      <motion.div animate={{ scale:[1,1.18,1], opacity:[.12,.22,.12] }} transition={{ duration:7, repeat:Infinity, ease:'easeInOut' }}
+      <motion.div animate={{ scale:[1,1.18,1], opacity:[.12,.22,.12] }} transition={{ duration:20, repeat:Infinity, ease:'easeInOut' }}
         style={{ position:'absolute',top:'-8%',right:'-4%',width:640,height:640,borderRadius:'50%',
           background:'radial-gradient(circle,rgba(158,255,0,.24) 0%,rgba(158,255,0,.08) 35%,transparent 72%)',pointerEvents:'none',zIndex:1 }}/>
-      <motion.div animate={{ scale:[1,1.25,1], opacity:[.07,.15,.07] }} transition={{ duration:9, repeat:Infinity, ease:'easeInOut', delay:2.5 }}
+      <motion.div animate={{ scale:[1,1.25,1], opacity:[.07,.15,.07] }} transition={{ duration:26, repeat:Infinity, ease:'easeInOut', delay:5 }}
         style={{ position:'absolute',bottom:'-12%',left:'-8%',width:520,height:520,borderRadius:'50%',
           background:'radial-gradient(circle,rgba(74,158,255,.1) 0%,transparent 70%)',pointerEvents:'none',zIndex:1 }}/>
 

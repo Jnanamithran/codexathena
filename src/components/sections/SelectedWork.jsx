@@ -47,7 +47,7 @@ function ProjectCard({ project }) {
       }} />
 
       {/* Thumb */}
-      <div className={`relative aspect-video bg-gradient-to-br ${grad} flex flex-1 items-center justify-center overflow-hidden`} style={{ minHeight: 0, aspectRatio: 'auto' }}>
+      <div className={`relative aspect-video bg-gradient-to-br ${grad} flex flex-1 items-center justify-center overflow-hidden`} style={{ minHeight: 'clamp(10rem, 22vw, 20rem)' }}>
         {project.thumb
           ? <img src={project.thumb} alt={project.title} className="w-full h-full object-cover" loading="lazy" />
           : (
